@@ -1,0 +1,15 @@
+{
+    "editor.accessibilitySupport": "auto",
+    "editor.experimental.preferTreeSitter.css": true,
+    "editor.experimental.asyncTokenizationVerification": true,
+    "editor.experimental.preferTreeSitter.ini": true,
+    "editor.experimental.preferTreeSitter.regex": true,
+    "editor.experimental.preferTreeSitter.typescript": true,
+    "editor.experimental.treeSitterTelemetry": true,
+    "editor.experimentalGpuAcceleration": "on",
+    "window.autoDetectColorScheme": false,
+    "inlineChat.lineEmptyHint": true,
+    "inlineChat.hideOnRequest": true,
+    "inlineChat.enableV2": true,
+    "application.experimental.rendererProfiling": true
+}

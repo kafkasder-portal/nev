@@ -1,0 +1,2 @@
+function b(e,n,a){const s=t=>Array.isArray(t)?t:typeof t=="object"&&t!==null?Object.values(t):[String(t)],o=n.map(t=>s(t).map(u).join(",")).join(`
+`),i=new Blob([o],{type:"text/csv;charset=utf-8;"}),r=URL.createObjectURL(i),c=document.createElement("a");c.setAttribute("href",r),c.setAttribute("download",e),c.click(),URL.revokeObjectURL(r)}function u(e){if(e==null)return"";const n=String(e);return/[",\n]/.test(n)?'"'+n.replace(/"/g,'""')+'"':n}export{b as e};

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dernek Yönetim Paneli</title>
+    <meta name="description" content="Modern NGO Management System" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#000000" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script type="module" crossorigin src="/assets/index-DdeQrtE8.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-Ba6jih-_.js">
+    <link rel="modulepreload" crossorigin href="/assets/query-D2a9LsAW.js">
+    <link rel="modulepreload" crossorigin href="/assets/router-PzPojOO1.js">
+    <link rel="modulepreload" crossorigin href="/assets/supabase-B5p9Wfie.js">
+    <link rel="modulepreload" crossorigin href="/assets/ui-yrixFDMZ.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-BMOtDeWd.css">
+  </head>
+  <body>
+    <div id="root">
+      <div style="padding: 20px; font-family: Arial; background: lightgreen; text-align: center;">
+        <h1>🔧 HTML Test</h1>
+        <p>Bu HTML direkt olarak çalışıyor (JavaScript olmadan)</p>
+        <p>Eğer bu görünüyorsa, sorun React/JavaScript'te</p>
+      </div>
+    </div>
+    <script>
+      console.log('HTML loaded, checking if main.tsx will load...');
+      setTimeout(() => {
+        const root = document.getElementById('root');
+        if (root && root.innerHTML.includes('HTML Test')) {
+          console.log('React did not override HTML - React is not working');
+        } else {
+          console.log('React successfully loaded and replaced HTML');
+        }
+      }, 2000);
+    </script>
+  </body>
+</html>
