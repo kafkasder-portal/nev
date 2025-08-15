@@ -36,12 +36,12 @@ export default function DashboardIndex() {
         </div>
       </div>
 
-      {/* Ana İstatistikler */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard 
-          title="Toplam İhtiyaç Sahibi" 
-          value="1,247" 
-          icon={<Users className="h-5 w-5 text-blue-700" />} 
+      {/* Operational Metrics */}
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <StatCard
+          title="Kayıtlı Yararlanıcı Sayısı"
+          value="1,247"
+          icon={<Users className="h-5 w-5 text-corporate-navy" />} 
           accentClass="bg-blue-100"
           subtitle="+12 bu ay"
         />
