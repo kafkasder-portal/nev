@@ -1,13 +1,20 @@
-import { 
-  Users, 
-  Coins, 
-  FileText, 
+import {
+  Users,
+  Coins,
+  FileText,
   Heart,
   TrendingUp,
   Calendar,
   MessageSquare,
   PieChart,
-  Activity
+  Activity,
+  Building2,
+  ClipboardList,
+  HandHeart,
+  BarChart3,
+  Briefcase,
+  UserCheck,
+  CreditCard
 } from 'lucide-react'
 import { StatCard } from '@components/StatCard'
 import { Link } from 'react-router-dom'
