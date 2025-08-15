@@ -210,9 +210,9 @@ export default function TasksIndex() {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold">Görevler</h1>
-          <p className="text-muted-foreground">
-            Görev atama ve takip sistemi
+          <h1 className="text-3xl font-semibold tracking-tight text-corporate-slate">Görev Yönetimi</h1>
+          <p className="text-corporate-gray mt-1">
+            Operasyonel görev atama ve izleme sistemi
           </p>
         </div>
         {canCreateTask && (
