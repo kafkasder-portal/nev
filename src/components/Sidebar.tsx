@@ -183,10 +183,16 @@ export function Sidebar() {
   ]
 
   return (
-    <aside className="sticky top-0 hidden h-screen w-64 shrink-0 border-r bg-[#0f172a] text-white md:block overflow-y-auto">
-      <div className="flex h-14 items-center gap-2 border-b border-white/10 px-4">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="text-base font-semibold">Dernek Paneli</span>
+    <aside className="sticky top-0 hidden h-screen w-64 shrink-0 border-r corporate-sidebar md:block overflow-y-auto">
+      <div className="flex h-16 items-center gap-3 border-b border-white/20 px-6">
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-white/20 transition-colors">
+            <Building2 className="h-5 w-5 text-white" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-lg font-semibold text-white">Dernek</span>
+            <span className="text-xs text-white/70 -mt-1">Yönetim Sistemi</span>
+          </div>
         </Link>
       </div>
       <div className="space-y-4 p-3">
