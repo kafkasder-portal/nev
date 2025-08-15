@@ -216,9 +216,12 @@ export default function TasksIndex() {
           </p>
         </div>
         {canCreateTask && (
-          <Button onClick={() => setShowForm(true)}>
+          <Button
+            onClick={() => setShowForm(true)}
+            className="btn-corporate-primary px-6 py-2.5"
+          >
             <Plus className="h-4 w-4 mr-2" />
-            Yeni Görev
+            Görev Oluştur
           </Button>
         )}
       </div>
