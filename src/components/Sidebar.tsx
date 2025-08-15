@@ -211,8 +211,8 @@ export function Sidebar() {
           </div>
         </div>
 
-        <div>
-          <div className="mb-2 px-2 text-xs font-semibold uppercase text-white/60">Modüller</div>
+        <div className="px-4">
+          <div className="mb-3 px-2 text-xs font-medium uppercase tracking-wider text-white/50">Operasyonel Modüller</div>
           <div className="space-y-1">
             {/* Fon Yönetimi - Genişletilebilir */}
             {expandableItem(<Wallet className="h-4 w-4" />, 'Fon Yönetimi', isFundExpanded, () => setIsFundExpanded(!isFundExpanded))}
