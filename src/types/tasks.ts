@@ -10,30 +10,8 @@ export interface Task {
   category?: string
   estimated_hours?: number
   actual_hours?: number
-  time_tracked?: number // Real-time tracked hours
   completion_notes?: string
   completed_at?: string
-  dependencies?: string[] // Task IDs that must be completed first
-  tags?: string[]
-  recurring?: {
-    enabled: boolean
-    pattern: 'daily' | 'weekly' | 'monthly'
-    end_date?: string
-    next_occurrence?: string
-  }
-  subtasks?: TaskSubtask[]
-  created_at: string
-  updated_at: string
-}
-
-export interface TaskSubtask {
-  id: string
-  parent_task_id: string
-  title: string
-  description?: string
-  completed: boolean
-  assigned_to?: string
-  due_date?: string
   created_at: string
   updated_at: string
 }
@@ -173,5 +151,5 @@ export const TASK_STATUS_LABELS = {
   in_progress: 'Devam Ediyor',
   completed: 'Tamamlandı',
   cancelled: 'İptal Edildi',
-  overdue: 'S��resi Geçti'
+  overdue: 'Süresi Geçti'
 }

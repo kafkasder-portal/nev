@@ -64,7 +64,7 @@ router.get('/conversations', authenticateUser, async (req: Request, res: Respons
 
     // Filter to only show conversations where user is a participant
     const filteredConversations = conversations?.filter(conv => 
-      conv.participants?.some((p: any) => p.user_id === req.user!.id)
+      conv.participants?.some((p: any) => p.user_id === req.user.id)
     ) || [];
 
     res.json({ data: filteredConversations });
@@ -85,7 +85,7 @@ router.get('/conversations/:id', authenticateUser, async (req: Request, res: Res
       .from('conversation_participants')
       .select('id')
       .eq('conversation_id', id)
-      .eq('user_id', req.user!.id)
+      .eq('user_id', req.user.id)
       .single();
 
     if (participationError || !participation) {
@@ -148,7 +148,7 @@ router.get('/conversations/:id', authenticateUser, async (req: Request, res: Res
       .from('conversation_participants')
       .update({ last_read_at: new Date().toISOString() })
       .eq('conversation_id', id)
-      .eq('user_id', req.user!.id);
+      .eq('user_id', req.user.id);
 
     res.json({ 
       data: {
@@ -179,7 +179,7 @@ router.post('/conversations', authenticateUser, async (req: Request, res: Respon
         description,
         type,
         is_private,
-        created_by: req.user!.id
+        created_by: req.user.id
       })
       .select()
       .single();
@@ -193,7 +193,7 @@ router.post('/conversations', authenticateUser, async (req: Request, res: Respon
     const participantData = [
       {
         conversation_id: conversation.id,
-        user_id: req.user!.id,
+        user_id: req.user.id,
         role: 'admin'
       }
     ];
@@ -239,7 +239,7 @@ router.put('/conversations/:id', authenticateUser, async (req: Request, res: Res
         updated_at: new Date().toISOString()
       })
       .eq('id', id)
-      .eq('created_by', req.user!.id) // Only creator can update
+      .eq('created_by', req.user.id) // Only creator can update
       .select()
       .single();
 
@@ -274,7 +274,7 @@ router.post('/conversations/:id/participants', authenticateUser, async (req: Req
       .from('conversation_participants')
       .select('role')
       .eq('conversation_id', id)
-      .eq('user_id', req.user!.id)
+      .eq('user_id', req.user.id)
       .single();
 
     if (permissionError || !userParticipation || userParticipation.role === 'member') {
@@ -315,7 +315,7 @@ router.delete('/conversations/:id/participants/:userId', authenticateUser, async
     const { id, userId } = req.params;
 
     // Users can remove themselves, or admins can remove others
-    const canRemove = userId === req.user!.id;
+    const canRemove = userId === req.user.id;
     
     if (!canRemove) {
       // Check if current user is admin
@@ -323,7 +323,7 @@ router.delete('/conversations/:id/participants/:userId', authenticateUser, async
         .from('conversation_participants')
         .select('role')
         .eq('conversation_id', id)
-        .eq('user_id', req.user!.id)
+        .eq('user_id', req.user.id)
         .single();
 
       if (!userParticipation || userParticipation.role !== 'admin') {
@@ -364,7 +364,7 @@ router.post('/conversations/:id/messages', authenticateUser, async (req: Request
       .from('conversation_participants')
       .select('id')
       .eq('conversation_id', id)
-      .eq('user_id', req.user!.id)
+      .eq('user_id', req.user.id)
       .single();
 
     if (participationError || !participation) {
@@ -375,7 +375,7 @@ router.post('/conversations/:id/messages', authenticateUser, async (req: Request
       .from('internal_messages')
       .insert({
         conversation_id: id,
-        sender_id: req.user!.id,
+        sender_id: req.user.id,
         content,
         message_type,
         file_path,
@@ -430,7 +430,7 @@ router.put('/messages/:messageId', authenticateUser, async (req: Request, res: R
         edited_at: new Date().toISOString()
       })
       .eq('id', messageId)
-      .eq('sender_id', req.user!.id) // Only sender can edit
+      .eq('sender_id', req.user.id) // Only sender can edit
       .select(`
         *,
         sender:user_profiles!internal_messages_sender_id_fkey(full_name, avatar_url)
@@ -463,7 +463,7 @@ router.delete('/messages/:messageId', authenticateUser, async (req: Request, res
       .from('internal_messages')
       .select('file_path, message_type')
       .eq('id', messageId)
-      .eq('sender_id', req.user!.id)
+      .eq('sender_id', req.user.id)
       .single();
 
     if (!message) {
@@ -487,7 +487,7 @@ router.delete('/messages/:messageId', authenticateUser, async (req: Request, res
       .from('internal_messages')
       .delete()
       .eq('id', messageId)
-      .eq('sender_id', req.user!.id);
+      .eq('sender_id', req.user.id);
 
     if (error) {
       console.error('Error deleting message:', error);
@@ -515,7 +515,7 @@ router.post('/messages/:messageId/reactions', authenticateUser, async (req: Requ
       .from('message_reactions')
       .insert({
         message_id: messageId,
-        user_id: req.user!.id,
+        user_id: req.user.id,
         emoji
       })
       .select(`
@@ -548,7 +548,7 @@ router.delete('/messages/:messageId/reactions/:reactionId', authenticateUser, as
       .from('message_reactions')
       .delete()
       .eq('id', reactionId)
-      .eq('user_id', req.user!.id); // Only user who reacted can remove
+      .eq('user_id', req.user.id); // Only user who reacted can remove
 
     if (error) {
       console.error('Error removing reaction:', error);
@@ -572,7 +572,7 @@ router.get('/conversations/:id/unread-count', authenticateUser, async (req: Requ
       .from('conversation_participants')
       .select('last_read_at')
       .eq('conversation_id', id)
-      .eq('user_id', req.user!.id)
+      .eq('user_id', req.user.id)
       .single();
 
     if (!participation) {
@@ -584,7 +584,7 @@ router.get('/conversations/:id/unread-count', authenticateUser, async (req: Requ
       .from('internal_messages')
       .select('id', { count: 'exact', head: true })
       .eq('conversation_id', id)
-      .neq('sender_id', req.user!.id); // Don't count own messages
+      .neq('sender_id', req.user.id); // Don't count own messages
 
     if (participation.last_read_at) {
       query = query.gt('created_at', participation.last_read_at);

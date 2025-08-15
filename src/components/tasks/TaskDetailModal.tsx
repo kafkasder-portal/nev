@@ -24,8 +24,7 @@ import {
 import { Button } from '../ui/button'
 import { Card } from '../ui/card'
 import { tasksApi } from '../../api/tasks'
-import { Task, TaskComment, TaskAttachment, TaskActivity } from '@/types/tasks'
-import TimeTracker from './TimeTracker'
+import { Task, TaskComment, TaskAttachment, TaskActivity } from '@/types/collaboration'
 
 import { useAuthStore } from '@store/auth'
 import toast from 'react-hot-toast'

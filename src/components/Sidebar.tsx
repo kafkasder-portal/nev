@@ -58,29 +58,25 @@ export function Sidebar() {
     <NavLink
       to={to}
       className={({ isActive }) =>
-        `flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
-          isActive
-            ? 'bg-white/15 text-white shadow-sm border-l-2 border-white/30'
-            : 'text-white/80 hover:bg-white/10 hover:text-white'
-        } ${isSubItem ? 'ml-4 text-xs' : ''}`
+        `flex items-center gap-3 rounded px-3 py-2 text-sm hover:bg-white/10 transition-colors ${
+          isActive ? 'bg-white/10 font-medium text-white' : 'text-white/70'
+        } ${isSubItem ? 'ml-6' : ''}`
       }
     >
-      <div className={`${isSubItem ? 'opacity-75' : ''}`}>{icon}</div>
-      <span className="truncate">{label}</span>
+      {icon}
+      <span>{label}</span>
     </NavLink>
   )
 
   const expandableItem = (icon: React.JSX.Element, label: string, isExpanded: boolean, onToggle: () => void) => (
     <div>
-      <div
-        className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-white/10 transition-all duration-200 cursor-pointer text-white/80 hover:text-white group"
+      <div 
+        className="flex items-center gap-3 rounded px-3 py-2 text-sm hover:bg-white/10 transition-colors cursor-pointer text-white/70"
         onClick={onToggle}
       >
         {icon}
-        <span className="flex-1 truncate">{label}</span>
-        <div className={`transition-transform duration-200 ${isExpanded ? 'rotate-180' : 'rotate-0'}`}>
-          <ChevronDown className="h-4 w-4 opacity-60 group-hover:opacity-100" />
-        </div>
+        <span className="flex-1">{label}</span>
+        {isExpanded ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
       </div>
     </div>
   )
@@ -187,39 +183,33 @@ export function Sidebar() {
   ]
 
   return (
-    <aside className="sticky top-0 hidden h-screen w-64 shrink-0 border-r corporate-sidebar md:block overflow-y-auto">
-      <div className="flex h-16 items-center gap-3 border-b border-white/20 px-6">
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-white/20 transition-colors">
-            <Building2 className="h-5 w-5 text-white" />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-lg font-semibold text-white">Dernek</span>
-            <span className="text-xs text-white/70 -mt-1">Yönetim Sistemi</span>
-          </div>
+    <aside className="sticky top-0 hidden h-screen w-64 shrink-0 border-r bg-[#0f172a] text-white md:block overflow-y-auto">
+      <div className="flex h-14 items-center gap-2 border-b border-white/10 px-4">
+        <Link to="/" className="flex items-center gap-2">
+          <span className="text-base font-semibold">Dernek Paneli</span>
         </Link>
       </div>
-      <div className="space-y-6 py-4">
-        <div className="px-4">
-          <div className="mb-3 px-2 text-xs font-medium uppercase tracking-wider text-white/50">Genel Yönetim</div>
+      <div className="space-y-4 p-3">
+        <div>
+          <div className="mb-2 px-2 text-xs font-semibold uppercase text-white/60">Genel</div>
           <div className="space-y-1">
-            {item('/', <Home className="h-4 w-4" />, 'Dashboard')}
+            {item('/', <Home className="h-4 w-4" />, 'Ana Sayfa')}
           </div>
         </div>
-        <div className="px-4">
-          <div className="mb-3 px-2 text-xs font-medium uppercase tracking-wider text-white/50">İşbirliği</div>
+        <div>
+          <div className="mb-2 px-2 text-xs font-semibold uppercase text-white/60">Collaboration</div>
           <div className="space-y-1">
-            {item('/meetings', <Calendar className="h-4 w-4" />, 'Toplantı Yönetimi')}
-            {item('/internal-messages', <MessageSquare className="h-4 w-4" />, 'Kurumsal İletişim')}
-            {item('/tasks', <CheckSquare className="h-4 w-4" />, 'Görev Koordinasyonu')}
+            {item('/meetings', <Calendar className="h-4 w-4" />, 'Toplantılar')}
+            {item('/internal-messages', <MessageSquare className="h-4 w-4" />, 'İç Mesajlar')}
+            {item('/tasks', <CheckSquare className="h-4 w-4" />, 'Görevler')}
           </div>
         </div>
 
-        <div className="px-4">
-          <div className="mb-3 px-2 text-xs font-medium uppercase tracking-wider text-white/50">Operasyonel Mod��ller</div>
+        <div>
+          <div className="mb-2 px-2 text-xs font-semibold uppercase text-white/60">Modüller</div>
           <div className="space-y-1">
             {/* Fon Yönetimi - Genişletilebilir */}
-            {expandableItem(<Wallet className="h-4 w-4" />, 'Mali İşler Yönetimi', isFundExpanded, () => setIsFundExpanded(!isFundExpanded))}
+            {expandableItem(<Wallet className="h-4 w-4" />, 'Fon Yönetimi', isFundExpanded, () => setIsFundExpanded(!isFundExpanded))}
 
             {/* Fon Alt menüleri */}
             {isFundExpanded && (
@@ -233,7 +223,7 @@ export function Sidebar() {
             )}
 
             {/* Bağış Yönetimi - Genişletilebilir */}
-            {expandableItem(<Coins className="h-4 w-4" />, 'Bağış ve Kaynak Yönetimi', isDonationsExpanded, () => setIsDonationsExpanded(!isDonationsExpanded))}
+            {expandableItem(<Coins className="h-4 w-4" />, 'Bağış Yönetimi', isDonationsExpanded, () => setIsDonationsExpanded(!isDonationsExpanded))}
 
             {/* Bağış Alt menüleri */}
             {isDonationsExpanded && (
@@ -247,7 +237,7 @@ export function Sidebar() {
             )}
             
             {/* Mesaj Yönetimi - Genişletilebilir */}
-            {expandableItem(<Mail className="h-4 w-4" />, 'İletişim Yönetimi', isMessagesExpanded, () => setIsMessagesExpanded(!isMessagesExpanded))}
+            {expandableItem(<Mail className="h-4 w-4" />, 'Mesaj Yönetimi', isMessagesExpanded, () => setIsMessagesExpanded(!isMessagesExpanded))}
             
             {/* Mesaj Alt menüleri */}
             {isMessagesExpanded && (
@@ -261,7 +251,7 @@ export function Sidebar() {
             )}
             
             {/* Burs Yönetimi - Genişletilebilir */}
-            {expandableItem(<GraduationCap className="h-4 w-4" />, 'Eğitim Desteği Yönetimi', isScholarshipExpanded, () => setIsScholarshipExpanded(!isScholarshipExpanded))}
+            {expandableItem(<GraduationCap className="h-4 w-4" />, 'Burs Yönetimi', isScholarshipExpanded, () => setIsScholarshipExpanded(!isScholarshipExpanded))}
 
             {/* Burs Alt menüleri */}
             {isScholarshipExpanded && (
