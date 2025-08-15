@@ -68,32 +68,32 @@ export default function DashboardIndex() {
         />
       </div>
 
-      {/* Hızlı Erişim Kartları */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {/* Operasyonel İşlemler */}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         <QuickAccessCard
-          title="Yeni Başvuru"
-          description="İhtiyaç sahibi başvurusu oluştur"
+          title="Başvuru Kaydı"
+          description="Yeni yararlanıcı başvurusu oluşturun"
           icon={<FileText className="h-6 w-6" />}
           color="bg-blue-500"
           link="/aid/applications"
         />
         <QuickAccessCard
-          title="Bağış Kabul"
-          description="Yeni bağış kaydı oluştur"
+          title="Bağış İşlemleri"
+          description="Bağış gelirlerini sisteme kaydedin"
           icon={<Coins className="h-6 w-6" />}
           color="bg-green-500"
           link="/donations/cash"
         />
         <QuickAccessCard
-          title="Mesaj Gönder"
-          description="Toplu mesaj gönderimi yap"
+          title="İletişim Merkezi"
+          description="Toplu bilgilendirme mesajları gönderin"
           icon={<MessageSquare className="h-6 w-6" />}
           color="bg-purple-500"
           link="/messages/bulk-send"
         />
         <QuickAccessCard
-          title="Rapor Oluştur"
-          description="Yardım raporu hazırla"
+          title="Raporlama Sistemi"
+          description="Operasyonel raporları oluşturun"
           icon={<PieChart className="h-6 w-6" />}
           color="bg-orange-500"
           link="/aid/reports"
@@ -152,7 +152,7 @@ export default function DashboardIndex() {
               unit="₺"
             />
             <ProgressItem
-              title="Yardım Dağıt��mı"
+              title="Yardım Dağıtımı"
               current={38240}
               target={45000}
               unit="₺"
