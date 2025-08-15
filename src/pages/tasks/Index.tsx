@@ -226,8 +226,8 @@ export default function TasksIndex() {
         )}
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+      {/* Operational Metrics */}
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
