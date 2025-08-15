@@ -45,26 +45,26 @@ export default function DashboardIndex() {
           accentClass="bg-blue-100"
           subtitle="+12 bu ay"
         />
-        <StatCard 
-          title="Aktif Başvuru" 
-          value="187" 
-          icon={<FileText className="h-5 w-5 text-orange-700" />} 
+        <StatCard
+          title="Bekleyen Başvuru Sayısı"
+          value="187"
+          icon={<FileText className="h-5 w-5 text-warning" />}
           accentClass="bg-orange-100"
-          subtitle="Değerlendirme bekliyor"
+          subtitle="Değerlendirme aşamasında"
         />
-        <StatCard 
-          title="Bu Ay Toplanan Bağış" 
-          value="₺45,670" 
-          icon={<Coins className="h-5 w-5 text-green-700" />} 
+        <StatCard
+          title="Aylık Bağış Geliri"
+          value="₺45,670"
+          icon={<Coins className="h-5 w-5 text-success" />}
           accentClass="bg-green-100"
-          subtitle="+%15 geçen aya göre"
+          subtitle="Önceki aya göre %15 artış"
         />
-        <StatCard 
-          title="Dağıtılan Yardım" 
-          value="₺38,240" 
-          icon={<Heart className="h-5 w-5 text-red-700" />} 
-          accentClass="bg-red-100"
-          subtitle="Bu ay"
+        <StatCard
+          title="Dağıtılan Yardım Tutarı"
+          value="₺38,240"
+          icon={<Heart className="h-5 w-5 text-info" />}
+          accentClass="bg-blue-100"
+          subtitle="Mevcut dönem"
         />
       </div>
 
@@ -152,7 +152,7 @@ export default function DashboardIndex() {
               unit="₺"
             />
             <ProgressItem
-              title="Yardım Dağıtımı"
+              title="Yardım Dağıt��mı"
               current={38240}
               target={45000}
               unit="₺"
