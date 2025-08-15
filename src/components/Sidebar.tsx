@@ -216,7 +216,7 @@ export function Sidebar() {
         </div>
 
         <div className="px-4">
-          <div className="mb-3 px-2 text-xs font-medium uppercase tracking-wider text-white/50">Operasyonel Modüller</div>
+          <div className="mb-3 px-2 text-xs font-medium uppercase tracking-wider text-white/50">Operasyonel Mod��ller</div>
           <div className="space-y-1">
             {/* Fon Yönetimi - Genişletilebilir */}
             {expandableItem(<Wallet className="h-4 w-4" />, 'Mali İşler Yönetimi', isFundExpanded, () => setIsFundExpanded(!isFundExpanded))}
@@ -261,7 +261,7 @@ export function Sidebar() {
             )}
             
             {/* Burs Yönetimi - Genişletilebilir */}
-            {expandableItem(<GraduationCap className="h-4 w-4" />, 'Burs Yönetimi', isScholarshipExpanded, () => setIsScholarshipExpanded(!isScholarshipExpanded))}
+            {expandableItem(<GraduationCap className="h-4 w-4" />, 'Eğitim Desteği Yönetimi', isScholarshipExpanded, () => setIsScholarshipExpanded(!isScholarshipExpanded))}
 
             {/* Burs Alt menüleri */}
             {isScholarshipExpanded && (
