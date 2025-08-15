@@ -88,6 +88,11 @@ const LocalIPs = lazy(() => import('./pages/system/LocalIPs'))
 const IPBlocking = lazy(() => import('./pages/system/IPBlocking'))
 const UserManagement = lazy(() => import('./pages/system/UserManagement'))
 
+// Test Pages
+const SentryTest = lazy(() => import('./pages/SentryTest'))
+
+// Demo Pages
+const RelatedRecordsDemo = lazy(() => import('./pages/demo/RelatedRecordsDemo'))
 
 // Meetings
 const MeetingsIndex = lazy(() => import('./pages/meetings/Index'))
@@ -523,6 +528,22 @@ function AppRoutes() {
         </ProtectedRoute>
       } />
       
+      {/* Test routes */}
+      <Route path="/sentry-test" element={
+        <ProtectedRoute>
+          {withSystemSuspense(SentryTest)}
+        </ProtectedRoute>
+      } />
+      <Route path="/supabase-test" element={
+        <ProtectedRoute>
+          {withSystemSuspense(SupabaseTest)}
+        </ProtectedRoute>
+      } />
+      <Route path="/demo/related-records" element={
+        <ProtectedRoute>
+          {withSystemSuspense(RelatedRecordsDemo)}
+        </ProtectedRoute>
+      } />
 
       
       {/* Catch-all route for 404 errors */}

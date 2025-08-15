@@ -51,7 +51,7 @@ interface RealtimeTaskUpdatesProps {
   onTaskClick?: (task: Task) => void
 }
 
-export default function RealtimeTaskUpdates({ 
+export function RealtimeTaskUpdates({ 
   className,
   showMyTasks = true,
   showAssignedByMe = false,

@@ -8,21 +8,15 @@ type Props = {
   subtitle?: string
 }
 
-export function StatCard({ title, value, accentClass = 'bg-corporate-light', icon, subtitle }: Props) {
+export function StatCard({ title, value, accentClass = 'bg-gray-200', icon, subtitle }: Props) {
   return (
-    <div className="corporate-card-elevated p-6 hover:shadow-lg transition-all duration-200 group">
-      <div className="flex items-start justify-between">
+    <div className="rounded-lg border bg-card p-4">
+      <div className="flex items-center gap-3">
+        <div className={`flex h-10 w-10 items-center justify-center rounded ${accentClass}`}>{icon}</div>
         <div className="flex-1">
-          <div className="text-sm font-medium text-corporate-gray uppercase tracking-wide mb-2">{title}</div>
-          <div className="text-3xl font-semibold text-corporate-slate mb-1">{value}</div>
-          {subtitle && (
-            <div className="text-xs text-corporate-gray flex items-center gap-1">
-              {subtitle}
-            </div>
-          )}
-        </div>
-        <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${accentClass} group-hover:scale-105 transition-transform duration-200`}>
-          {icon}
+          <div className="text-sm text-muted-foreground">{title}</div>
+          <div className="text-xl font-semibold">{value}</div>
+          {subtitle && <div className="text-xs text-muted-foreground mt-1">{subtitle}</div>}
         </div>
       </div>
     </div>

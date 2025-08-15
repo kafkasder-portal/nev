@@ -4,14 +4,11 @@ import { Button } from '@components/ui/button'
 import { Card } from '@components/ui/card'
 import TaskForm from '@components/tasks/TaskForm'
 import TaskDetailModal from '@components/tasks/TaskDetailModal'
-import RealtimeTaskUpdates from '@components/tasks/RealtimeTaskUpdates'
-import { TaskSkeletonList } from '@components/tasks/TaskSkeleton'
 import { tasksApi } from '../../api/tasks'
-import { Task } from '@/types/tasks'
+import { Task } from '@/types/collaboration'
 // import { usePermissions } from '@hooks/usePermissions'
 import { useAuthStore } from '@store/auth'
 import toast from 'react-hot-toast'
-import { errorService, ErrorCategory } from '@services/errorService'
 import { format } from 'date-fns'
 import { tr } from 'date-fns/locale'
 
@@ -46,12 +43,7 @@ export default function TasksIndex() {
       const data = await tasksApi.getTasks()
       setTasks(data)
     } catch (error) {
-      errorService.logError(error as Error, {
-        component: 'TasksIndex',
-        action: 'fetchTasks',
-        userId: user?.id,
-        userEmail: user?.email
-      }, ErrorCategory.NETWORK)
+      console.error('Failed to fetch tasks:', error)
       toast.error('Görevler yüklenirken hata oluştu')
     } finally {
       setLoading(false)
@@ -197,64 +189,51 @@ export default function TasksIndex() {
 
   return (
     <div className="space-y-6">
-      {/* Real-time updates */}
-      <RealtimeTaskUpdates
-        userId={currentUserId || ''}
-        onTaskUpdate={(updatedTask) => {
-          setTasks(prev => prev.map(task =>
-            task.id === updatedTask.id ? updatedTask : task
-          ))
-        }}
-      />
-
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight text-corporate-slate">Görev Yönetimi</h1>
-          <p className="text-corporate-gray mt-1">
-            Operasyonel görev atama ve izleme sistemi
+          <h1 className="text-3xl font-bold">Görevler</h1>
+          <p className="text-muted-foreground">
+            Görev atama ve takip sistemi
           </p>
         </div>
         {canCreateTask && (
-          <Button
-            onClick={() => setShowForm(true)}
-            className="btn-corporate-primary px-6 py-2.5"
-          >
+          <Button onClick={() => setShowForm(true)}>
             <Plus className="h-4 w-4 mr-2" />
-            Görev Oluştur
+            Yeni Görev
           </Button>
         )}
       </div>
 
-      {/* Operational Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-        <div className="corporate-card-elevated p-6 hover:shadow-lg transition-all duration-200">
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-corporate-gray uppercase tracking-wide">Toplam Görev</p>
-              <p className="text-3xl font-semibold text-corporate-slate mt-1">{stats.total}</p>
+              <p className="text-sm font-medium text-muted-foreground">Toplam Görev</p>
+              <p className="text-2xl font-bold">{stats.total}</p>
             </div>
-            <CheckCircle className="h-10 w-10 text-corporate-navy" />
+            <CheckCircle className="h-8 w-8 text-blue-500" />
           </div>
-        </div>
-        <div className="corporate-card-elevated p-6 hover:shadow-lg transition-all duration-200">
+        </Card>
+        <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-corporate-gray uppercase tracking-wide">Devam Eden</p>
-              <p className="text-3xl font-semibold text-corporate-slate mt-1">{stats.inProgress}</p>
+              <p className="text-sm font-medium text-muted-foreground">Devam Eden</p>
+              <p className="text-2xl font-bold">{stats.inProgress}</p>
             </div>
-            <Clock className="h-10 w-10 text-warning" />
+            <Clock className="h-8 w-8 text-orange-500" />
           </div>
-        </div>
-        <div className="corporate-card-elevated p-6 hover:shadow-lg transition-all duration-200">
+        </Card>
+        <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-corporate-gray uppercase tracking-wide">Tamamlanan</p>
-              <p className="text-3xl font-semibold text-corporate-slate mt-1">{stats.completed}</p>
+              <p className="text-sm font-medium text-muted-foreground">Tamamlanan</p>
+              <p className="text-2xl font-bold">{stats.completed}</p>
             </div>
-            <CheckCircle className="h-10 w-10 text-success" />
+            <CheckCircle className="h-8 w-8 text-green-500" />
           </div>
-        </div>
+        </Card>
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
@@ -331,7 +310,10 @@ export default function TasksIndex() {
 
       {/* Tasks List */}
       {loading ? (
-        <TaskSkeletonList count={5} />
+        <div className="text-center py-8">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <p className="text-muted-foreground mt-2">Görevler yükleniyor...</p>
+        </div>
       ) : (
         <Card className="overflow-hidden">
           {filteredTasks.length > 0 ? (

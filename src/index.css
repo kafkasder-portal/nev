@@ -4,129 +4,48 @@
 
 @layer base {
   :root {
-    /* Corporate Color Scheme - Professional Blue-Gray Palette */
     --background: 0 0% 100%;
-    --foreground: 215 25% 15%; /* Darker professional gray */
+    --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 15%;
+    --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 15%;
-    --primary: 213 94% 14%; /* Deep corporate blue */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 13% 91%; /* Light gray */
-    --secondary-foreground: 215 25% 15%;
-    --muted: 220 13% 95%; /* Very light gray */
-    --muted-foreground: 215 10% 45%; /* Professional gray */
-    --accent: 213 94% 14%; /* Match primary for consistency */
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 65% 51%; /* Professional red */
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 13% 85%; /* Subtle border */
-    --input: 220 13% 91%;
-    --ring: 213 94% 14%; /* Primary blue focus ring */
-    --radius: 0.375rem; /* Slightly smaller radius for corporate look */
-
-    /* Corporate specific colors */
-    --corporate-navy: 213 94% 14%;
-    --corporate-slate: 215 25% 15%;
-    --corporate-gray: 220 13% 45%;
-    --corporate-light: 220 13% 95%;
-    --success: 142 71% 45%; /* Professional green */
-    --warning: 38 92% 50%; /* Professional amber */
-    --info: 199 89% 48%; /* Professional info blue */
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
   }
 
   .dark {
-    /* Corporate Dark Mode - Professional and Elegant */
-    --background: 215 28% 8%; /* Deep professional dark */
-    --foreground: 0 0% 95%;
-    --card: 215 28% 10%; /* Slightly lighter for cards */
-    --card-foreground: 0 0% 95%;
-    --popover: 215 28% 10%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 199 89% 48%; /* Bright corporate blue for dark mode */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 215 20% 18%; /* Professional dark gray */
-    --secondary-foreground: 0 0% 90%;
-    --muted: 215 20% 15%; /* Darker muted */
-    --muted-foreground: 0 0% 65%;
-    --accent: 199 89% 48%; /* Match primary */
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 75% 60%; /* Brighter red for dark mode */
-    --destructive-foreground: 0 0% 100%;
-    --border: 215 20% 20%; /* Subtle dark border */
-    --input: 215 20% 18%;
-    --ring: 199 89% 48%; /* Primary blue focus ring */
-  }
-}
-
-@layer components {
-  /* Corporate Typography */
-  body {
-    font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
-    letter-spacing: -0.01em;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    color: hsl(var(--foreground));
-  }
-
-  /* Professional text colors */
-  .text-corporate-navy { color: hsl(var(--corporate-navy)); }
-  .text-corporate-slate { color: hsl(var(--corporate-slate)); }
-  .text-corporate-gray { color: hsl(var(--corporate-gray)); }
-
-  /* Corporate background colors */
-  .bg-corporate-navy { background-color: hsl(var(--corporate-navy)); }
-  .bg-corporate-light { background-color: hsl(var(--corporate-light)); }
-
-  /* Status colors */
-  .text-success { color: hsl(var(--success)); }
-  .text-warning { color: hsl(var(--warning)); }
-  .text-info { color: hsl(var(--info)); }
-  .bg-success { background-color: hsl(var(--success)); }
-  .bg-warning { background-color: hsl(var(--warning)); }
-  .bg-info { background-color: hsl(var(--info)); }
-
-  /* Corporate Card Styles */
-  .corporate-card {
-    @apply bg-card border border-border rounded-lg shadow-sm;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  }
-
-  .corporate-card-elevated {
-    @apply corporate-card;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  }
-
-  /* Professional Button Styles */
-  .btn-corporate-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-primary focus:ring-2 focus:ring-offset-2;
-    transition: all 150ms ease-in-out;
-  }
-
-  .btn-corporate-secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border;
-    transition: all 150ms ease-in-out;
-  }
-
-  /* Professional Layout */
-  .corporate-sidebar {
-    @apply bg-corporate-navy text-white;
-    background: linear-gradient(180deg, hsl(var(--corporate-navy)) 0%, hsl(213 94% 12%) 100%);
-  }
-
-  .corporate-header {
-    @apply bg-background border-b border-border;
-    backdrop-filter: blur(8px);
-    background: rgba(255, 255, 255, 0.95);
-  }
-
-  .dark .corporate-header {
-    background: rgba(0, 0, 0, 0.95);
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
   }
 }
 

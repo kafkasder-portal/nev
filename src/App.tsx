@@ -16,7 +16,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { queryClient, cacheUtils } from './lib/queryClient'
 import OfflineIndicator from './components/OfflineIndicator'
 import { useAuthStore } from './store/auth'
-import { ReactProfiler } from './lib/performance/ReactProfiler'
 
 // Inner component that uses theme-dependent hooks
 function AppContent() {

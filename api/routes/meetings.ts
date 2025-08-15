@@ -145,7 +145,7 @@ router.post('/', authenticateUser, async (req: Request, res: Response) => {
         location,
         meeting_type: meeting_type || 'physical',
         meeting_link,
-        organizer_id: req.user!.id
+        organizer_id: req.user.id
       })
       .select()
       .single();
@@ -200,7 +200,7 @@ router.put('/:id', authenticateUser, async (req: Request, res: Response) => {
         updated_at: new Date().toISOString()
       })
       .eq('id', id)
-      .eq('organizer_id', req.user!.id) // Only organizer can update
+      .eq('organizer_id', req.user.id) // Only organizer can update
       .select()
       .single();
 
@@ -229,7 +229,7 @@ router.delete('/:id', authenticateUser, async (req: Request, res: Response) => {
       .from('meetings')
       .delete()
       .eq('id', id)
-      .eq('organizer_id', req.user!.id); // Only organizer can delete
+      .eq('organizer_id', req.user.id); // Only organizer can delete
 
     if (error) {
       console.error('Error deleting meeting:', error);
@@ -264,7 +264,7 @@ router.post('/:id/participants', authenticateUser, async (req: Request, res: Res
       return res.status(404).json({ error: 'Meeting not found' });
     }
 
-    if (meeting.organizer_id !== req.user!.id) {
+    if (meeting.organizer_id !== req.user.id) {
       return res.status(403).json({ error: 'Only meeting organizer can add participants' });
     }
 
@@ -315,7 +315,7 @@ router.put('/:id/participants/:participantId', authenticateUser, async (req: Req
       .from('meeting_participants')
       .update(updateData)
       .eq('id', participantId)
-      .eq('user_id', req.user!.id) // Users can only update their own participation
+      .eq('user_id', req.user.id) // Users can only update their own participation
       .select()
       .single();
 
@@ -356,7 +356,7 @@ router.post('/:id/agenda', authenticateUser, async (req: Request, res: Response)
       return res.status(404).json({ error: 'Meeting not found' });
     }
 
-    if (meeting.organizer_id !== req.user!.id) {
+    if (meeting.organizer_id !== req.user.id) {
       return res.status(403).json({ error: 'Only meeting organizer can add agenda items' });
     }
 
@@ -403,7 +403,7 @@ router.post('/:id/notes', authenticateUser, async (req: Request, res: Response) 
       .insert({
         meeting_id: id,
         content,
-        created_by: req.user!.id
+        created_by: req.user.id
       })
       .select(`
         *,

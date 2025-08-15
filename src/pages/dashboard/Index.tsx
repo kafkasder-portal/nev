@@ -1,19 +1,13 @@
-import {
-  Users,
-  Coins,
-  FileText,
+import { 
+  Users, 
+  Coins, 
+  FileText, 
   Heart,
   TrendingUp,
   Calendar,
   MessageSquare,
   PieChart,
-  Activity,
-  Building2,
-  ClipboardList,
-  BarChart3,
-  Briefcase,
-  UserCheck,
-  CreditCard
+  Activity
 } from 'lucide-react'
 import { StatCard } from '@components/StatCard'
 import { Link } from 'react-router-dom'
@@ -22,85 +16,71 @@ import DashboardCharts from '@components/DashboardCharts'
 export default function DashboardIndex() {
   return (
     <div className="space-y-6">
-      {/* Executive Summary Header */}
-      <div className="corporate-card-elevated p-8 bg-gradient-to-r from-corporate-navy to-primary text-white">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-semibold tracking-tight">Operasyonel Kontrol Merkezi</h1>
-            <p className="mt-2 text-white/90 font-medium">
-              {new Date().toLocaleDateString('tr-TR', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
-            </p>
-          </div>
-          <div className="hidden sm:block">
-            <Activity className="h-16 w-16 text-white/20" />
-          </div>
-        </div>
+      {/* Hoş Geldiniz Başlığı */}
+      <div className="rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
+        <h1 className="text-2xl font-bold">Dernek Yönetim Paneline Hoş Geldiniz</h1>
+        <p className="mt-2 text-blue-100">Bugün {new Date().toLocaleDateString('tr-TR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
       </div>
 
-      {/* Operational Metrics */}
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard
-          title="Kayıtlı Yararlanıcı Sayısı"
-          value="1,247"
-          icon={<UserCheck className="h-5 w-5 text-corporate-navy" />} 
+      {/* Ana İstatistikler */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StatCard 
+          title="Toplam İhtiyaç Sahibi" 
+          value="1,247" 
+          icon={<Users className="h-5 w-5 text-blue-700" />} 
           accentClass="bg-blue-100"
           subtitle="+12 bu ay"
         />
-        <StatCard
-          title="Bekleyen Başvuru Sayısı"
-          value="187"
-          icon={<ClipboardList className="h-5 w-5 text-warning" />}
+        <StatCard 
+          title="Aktif Başvuru" 
+          value="187" 
+          icon={<FileText className="h-5 w-5 text-orange-700" />} 
           accentClass="bg-orange-100"
-          subtitle="Değerlendirme aşamasında"
+          subtitle="Değerlendirme bekliyor"
         />
-        <StatCard
-          title="Aylık Bağış Geliri"
-          value="₺45,670"
-          icon={<CreditCard className="h-5 w-5 text-success" />}
+        <StatCard 
+          title="Bu Ay Toplanan Bağış" 
+          value="₺45,670" 
+          icon={<Coins className="h-5 w-5 text-green-700" />} 
           accentClass="bg-green-100"
-          subtitle="Önceki aya göre %15 artış"
+          subtitle="+%15 geçen aya göre"
         />
-        <StatCard
-          title="Dağıtılan Yardım Tutarı"
-          value="₺38,240"
-          icon={<Heart className="h-5 w-5 text-info" />}
-          accentClass="bg-blue-100"
-          subtitle="Mevcut dönem"
+        <StatCard 
+          title="Dağıtılan Yardım" 
+          value="₺38,240" 
+          icon={<Heart className="h-5 w-5 text-red-700" />} 
+          accentClass="bg-red-100"
+          subtitle="Bu ay"
         />
       </div>
 
-      {/* Operasyonel İşlemler */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {/* Hızlı Erişim Kartları */}
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         <QuickAccessCard
-          title="Başvuru Kaydı"
-          description="Yeni yararlanıcı başvurusu oluşturun"
-          icon={<ClipboardList className="h-6 w-6" />}
+          title="Yeni Başvuru"
+          description="İhtiyaç sahibi başvurusu oluştur"
+          icon={<FileText className="h-6 w-6" />}
           color="bg-blue-500"
           link="/aid/applications"
         />
         <QuickAccessCard
-          title="Bağış İşlemleri"
-          description="Bağış gelirlerini sisteme kaydedin"
-          icon={<CreditCard className="h-6 w-6" />}
+          title="Bağış Kabul"
+          description="Yeni bağış kaydı oluştur"
+          icon={<Coins className="h-6 w-6" />}
           color="bg-green-500"
           link="/donations/cash"
         />
         <QuickAccessCard
-          title="İletişim Merkezi"
-          description="Toplu bilgilendirme mesajları gönderin"
-          icon={<Briefcase className="h-6 w-6" />}
+          title="Mesaj Gönder"
+          description="Toplu mesaj gönderimi yap"
+          icon={<MessageSquare className="h-6 w-6" />}
           color="bg-purple-500"
           link="/messages/bulk-send"
         />
         <QuickAccessCard
-          title="Raporlama Sistemi"
-          description="Operasyonel raporları oluşturun"
-          icon={<BarChart3 className="h-6 w-6" />}
+          title="Rapor Oluştur"
+          description="Yardım raporu hazırla"
+          icon={<PieChart className="h-6 w-6" />}
           color="bg-orange-500"
           link="/aid/reports"
         />
@@ -140,7 +120,7 @@ export default function DashboardIndex() {
             />
           </div>
           <Link to="/aid" className="mt-4 block text-sm text-primary hover:underline">
-            T��m aktiviteleri gör →
+            Tüm aktiviteleri gör →
           </Link>
         </div>
 
@@ -224,20 +204,12 @@ function QuickAccessCard({ title, description, icon, color, link }: {
 }) {
   return (
     <Link to={link} className="group block">
-      <div className="corporate-card p-6 transition-all duration-200 hover:shadow-lg hover:border-primary/20 group-hover:scale-105">
-        <div className="flex items-start gap-4">
-          <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${color} text-white shadow-sm group-hover:shadow-md transition-shadow`}>
-            {icon}
-          </div>
-          <div className="flex-1 min-w-0">
-            <h3 className="font-semibold text-corporate-slate group-hover:text-primary transition-colors text-lg mb-1">
-              {title}
-            </h3>
-            <p className="text-sm text-corporate-gray leading-relaxed">
-              {description}
-            </p>
-          </div>
+      <div className="rounded-lg border bg-card p-4 transition-all hover:border-primary hover:shadow-md">
+        <div className={`mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg ${color} text-white`}>
+          {icon}
         </div>
+        <h3 className="font-semibold group-hover:text-primary">{title}</h3>
+        <p className="text-sm text-muted-foreground">{description}</p>
       </div>
     </Link>
   )
