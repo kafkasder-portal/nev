@@ -26,7 +26,15 @@ const taskSchema = z.object({
   due_date: z.string().optional(),
   priority: z.enum(['low', 'medium', 'high', 'urgent']),
   category: z.string().optional(),
-  estimated_hours: z.number().min(0).optional()
+  estimated_hours: z.number().min(0).optional(),
+  actual_hours: z.number().min(0).optional(),
+  dependencies: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional(),
+  recurring: z.object({
+    enabled: z.boolean(),
+    pattern: z.enum(['daily', 'weekly', 'monthly']).optional(),
+    end_date: z.string().optional()
+  }).optional()
 })
 
 type TaskFormData = z.infer<typeof taskSchema>

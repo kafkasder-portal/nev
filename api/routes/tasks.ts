@@ -178,7 +178,7 @@ router.post('/', authenticateUser, async (req: Request, res: Response) => {
         description,
         priority,
         assigned_to,
-        assigned_by: req.user.id,
+        assigned_by: req.user!.id,
         due_date,
         status: 'pending'
       })
@@ -195,7 +195,7 @@ router.post('/', authenticateUser, async (req: Request, res: Response) => {
     }
 
     // Log activity
-    await logTaskActivity(task.id, req.user.id, 'created', {
+    await logTaskActivity(task.id, req.user!.id, 'created', {
       message: 'Task created',
       title: task.title
     });
@@ -260,7 +260,7 @@ router.put('/:id', authenticateUser, async (req: Request, res: Response) => {
 
     // Log status change activity
     if (status !== undefined && status !== currentTask.status) {
-      await logTaskActivity(id, req.user.id, 'status_changed', {
+      await logTaskActivity(id, req.user!.id, 'status_changed', {
         from: currentTask.status,
         to: status,
         message: `Status changed from ${currentTask.status} to ${status}`
@@ -269,7 +269,7 @@ router.put('/:id', authenticateUser, async (req: Request, res: Response) => {
 
     // Log assignment change
     if (assigned_to !== undefined && assigned_to !== currentTask.assigned_to) {
-      await logTaskActivity(id, req.user.id, 'assigned', {
+      await logTaskActivity(id, req.user!.id, 'assigned', {
         from: currentTask.assigned_to,
         to: assigned_to,
         message: 'Task assignment changed'
@@ -278,7 +278,7 @@ router.put('/:id', authenticateUser, async (req: Request, res: Response) => {
 
     // Log priority change
     if (priority !== undefined && priority !== currentTask.priority) {
-      await logTaskActivity(id, req.user.id, 'priority_changed', {
+      await logTaskActivity(id, req.user!.id, 'priority_changed', {
         from: currentTask.priority,
         to: priority,
         message: `Priority changed from ${currentTask.priority} to ${priority}`
@@ -301,7 +301,7 @@ router.delete('/:id', authenticateUser, async (req: Request, res: Response) => {
       .from('tasks')
       .delete()
       .eq('id', id)
-      .eq('assigned_by', req.user.id); // Only task creator can delete
+      .eq('assigned_by', req.user!.id); // Only task creator can delete
 
     if (error) {
       console.error('Error deleting task:', error);
@@ -329,7 +329,7 @@ router.post('/:id/comments', authenticateUser, async (req: Request, res: Respons
       .from('task_comments')
       .insert({
         task_id: id,
-        user_id: req.user.id,
+        user_id: req.user!.id,
         content
       })
       .select(`
@@ -344,7 +344,7 @@ router.post('/:id/comments', authenticateUser, async (req: Request, res: Respons
     }
 
     // Log activity
-    await logTaskActivity(id, req.user.id, 'commented', {
+    await logTaskActivity(id, req.user!.id, 'commented', {
       message: 'Added comment',
       comment_preview: content.substring(0, 100)
     });
@@ -373,7 +373,7 @@ router.put('/:id/comments/:commentId', authenticateUser, async (req: Request, re
         updated_at: new Date().toISOString()
       })
       .eq('id', commentId)
-      .eq('user_id', req.user.id) // Only comment author can update
+      .eq('user_id', req.user!.id) // Only comment author can update
       .select(`
         *,
         user:user_profiles!task_comments_user_id_fkey(full_name, avatar_url)
@@ -405,7 +405,7 @@ router.delete('/:id/comments/:commentId', authenticateUser, async (req: Request,
       .from('task_comments')
       .delete()
       .eq('id', commentId)
-      .eq('user_id', req.user.id); // Only comment author can delete
+      .eq('user_id', req.user!.id); // Only comment author can delete
 
     if (error) {
       console.error('Error deleting comment:', error);
@@ -437,7 +437,7 @@ router.post('/:id/attachments', authenticateUser, async (req: Request, res: Resp
         file_path,
         file_size,
         mime_type,
-        uploaded_by: req.user.id
+        uploaded_by: req.user!.id
       })
       .select(`
         *,
@@ -451,7 +451,7 @@ router.post('/:id/attachments', authenticateUser, async (req: Request, res: Resp
     }
 
     // Log activity
-    await logTaskActivity(id, req.user.id, 'attachment_added', {
+    await logTaskActivity(id, req.user!.id, 'attachment_added', {
       message: 'File attachment added',
       file_name: file_name
     });
@@ -473,7 +473,7 @@ router.delete('/:id/attachments/:attachmentId', authenticateUser, async (req: Re
       .from('task_attachments')
       .select('file_name, file_path')
       .eq('id', attachmentId)
-      .eq('uploaded_by', req.user.id)
+      .eq('uploaded_by', req.user!.id)
       .single();
 
     if (!attachment) {
@@ -495,7 +495,7 @@ router.delete('/:id/attachments/:attachmentId', authenticateUser, async (req: Re
       .from('task_attachments')
       .delete()
       .eq('id', attachmentId)
-      .eq('uploaded_by', req.user.id);
+      .eq('uploaded_by', req.user!.id);
 
     if (error) {
       console.error('Error deleting attachment:', error);
