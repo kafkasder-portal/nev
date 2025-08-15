@@ -26,6 +26,18 @@ export interface Task {
   updated_at: string
 }
 
+export interface TaskSubtask {
+  id: string
+  parent_task_id: string
+  title: string
+  description?: string
+  completed: boolean
+  assigned_to?: string
+  due_date?: string
+  created_at: string
+  updated_at: string
+}
+
 export interface TaskComment {
   id: string
   task_id: string
@@ -161,5 +173,5 @@ export const TASK_STATUS_LABELS = {
   in_progress: 'Devam Ediyor',
   completed: 'Tamamlandı',
   cancelled: 'İptal Edildi',
-  overdue: 'Süresi Geçti'
+  overdue: 'S��resi Geçti'
 }
