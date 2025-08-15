@@ -80,28 +80,28 @@ export default function DashboardIndex() {
         <QuickAccessCard
           title="Başvuru Kaydı"
           description="Yeni yararlanıcı başvurusu oluşturun"
-          icon={<FileText className="h-6 w-6" />}
+          icon={<ClipboardList className="h-6 w-6" />}
           color="bg-blue-500"
           link="/aid/applications"
         />
         <QuickAccessCard
           title="Bağış İşlemleri"
           description="Bağış gelirlerini sisteme kaydedin"
-          icon={<Coins className="h-6 w-6" />}
+          icon={<CreditCard className="h-6 w-6" />}
           color="bg-green-500"
           link="/donations/cash"
         />
         <QuickAccessCard
           title="İletişim Merkezi"
           description="Toplu bilgilendirme mesajları gönderin"
-          icon={<MessageSquare className="h-6 w-6" />}
+          icon={<Briefcase className="h-6 w-6" />}
           color="bg-purple-500"
           link="/messages/bulk-send"
         />
         <QuickAccessCard
           title="Raporlama Sistemi"
           description="Operasyonel raporları oluşturun"
-          icon={<PieChart className="h-6 w-6" />}
+          icon={<BarChart3 className="h-6 w-6" />}
           color="bg-orange-500"
           link="/aid/reports"
         />
@@ -141,7 +141,7 @@ export default function DashboardIndex() {
             />
           </div>
           <Link to="/aid" className="mt-4 block text-sm text-primary hover:underline">
-            Tüm aktiviteleri gör →
+            T��m aktiviteleri gör →
           </Link>
         </div>
 
