@@ -219,7 +219,7 @@ export function Sidebar() {
           <div className="mb-3 px-2 text-xs font-medium uppercase tracking-wider text-white/50">Operasyonel Modüller</div>
           <div className="space-y-1">
             {/* Fon Yönetimi - Genişletilebilir */}
-            {expandableItem(<Wallet className="h-4 w-4" />, 'Fon Yönetimi', isFundExpanded, () => setIsFundExpanded(!isFundExpanded))}
+            {expandableItem(<Wallet className="h-4 w-4" />, 'Mali İşler Yönetimi', isFundExpanded, () => setIsFundExpanded(!isFundExpanded))}
 
             {/* Fon Alt menüleri */}
             {isFundExpanded && (
@@ -233,7 +233,7 @@ export function Sidebar() {
             )}
 
             {/* Bağış Yönetimi - Genişletilebilir */}
-            {expandableItem(<Coins className="h-4 w-4" />, 'Bağış Yönetimi', isDonationsExpanded, () => setIsDonationsExpanded(!isDonationsExpanded))}
+            {expandableItem(<Coins className="h-4 w-4" />, 'Bağış ve Kaynak Yönetimi', isDonationsExpanded, () => setIsDonationsExpanded(!isDonationsExpanded))}
 
             {/* Bağış Alt menüleri */}
             {isDonationsExpanded && (
@@ -247,7 +247,7 @@ export function Sidebar() {
             )}
             
             {/* Mesaj Yönetimi - Genişletilebilir */}
-            {expandableItem(<Mail className="h-4 w-4" />, 'Mesaj Yönetimi', isMessagesExpanded, () => setIsMessagesExpanded(!isMessagesExpanded))}
+            {expandableItem(<Mail className="h-4 w-4" />, 'İletişim Yönetimi', isMessagesExpanded, () => setIsMessagesExpanded(!isMessagesExpanded))}
             
             {/* Mesaj Alt menüleri */}
             {isMessagesExpanded && (
