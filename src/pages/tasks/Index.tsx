@@ -190,6 +190,16 @@ export default function TasksIndex() {
 
   return (
     <div className="space-y-6">
+      {/* Real-time updates */}
+      <RealtimeTaskUpdates
+        userId={currentUserId || ''}
+        onTaskUpdate={(updatedTask) => {
+          setTasks(prev => prev.map(task =>
+            task.id === updatedTask.id ? updatedTask : task
+          ))
+        }}
+      />
+
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
