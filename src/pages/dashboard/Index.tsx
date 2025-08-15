@@ -10,7 +10,6 @@ import {
   Activity,
   Building2,
   ClipboardList,
-  HandHeart,
   BarChart3,
   Briefcase,
   UserCheck,
