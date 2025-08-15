@@ -209,9 +209,9 @@ export function Sidebar() {
         <div className="px-4">
           <div className="mb-3 px-2 text-xs font-medium uppercase tracking-wider text-white/50">İşbirliği</div>
           <div className="space-y-1">
-            {item('/meetings', <Calendar className="h-4 w-4" />, 'Toplantılar')}
-            {item('/internal-messages', <MessageSquare className="h-4 w-4" />, 'İç Mesajlar')}
-            {item('/tasks', <CheckSquare className="h-4 w-4" />, 'Görevler')}
+            {item('/meetings', <Calendar className="h-4 w-4" />, 'Toplantı Yönetimi')}
+            {item('/internal-messages', <MessageSquare className="h-4 w-4" />, 'Kurumsal İletişim')}
+            {item('/tasks', <CheckSquare className="h-4 w-4" />, 'Görev Koordinasyonu')}
           </div>
         </div>
 
