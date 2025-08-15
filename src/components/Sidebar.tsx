@@ -195,15 +195,15 @@ export function Sidebar() {
           </div>
         </Link>
       </div>
-      <div className="space-y-4 p-3">
-        <div>
-          <div className="mb-2 px-2 text-xs font-semibold uppercase text-white/60">Genel</div>
+      <div className="space-y-6 py-4">
+        <div className="px-4">
+          <div className="mb-3 px-2 text-xs font-medium uppercase tracking-wider text-white/50">Genel Yönetim</div>
           <div className="space-y-1">
-            {item('/', <Home className="h-4 w-4" />, 'Ana Sayfa')}
+            {item('/', <Home className="h-4 w-4" />, 'Dashboard')}
           </div>
         </div>
-        <div>
-          <div className="mb-2 px-2 text-xs font-semibold uppercase text-white/60">Collaboration</div>
+        <div className="px-4">
+          <div className="mb-3 px-2 text-xs font-medium uppercase tracking-wider text-white/50">İşbirliği</div>
           <div className="space-y-1">
             {item('/meetings', <Calendar className="h-4 w-4" />, 'Toplantılar')}
             {item('/internal-messages', <MessageSquare className="h-4 w-4" />, 'İç Mesajlar')}
