@@ -523,22 +523,6 @@ function AppRoutes() {
         </ProtectedRoute>
       } />
       
-      {/* Test routes */}
-      <Route path="/sentry-test" element={
-        <ProtectedRoute>
-          {withSystemSuspense(SentryTest)}
-        </ProtectedRoute>
-      } />
-      <Route path="/supabase-test" element={
-        <ProtectedRoute>
-          {withSystemSuspense(SupabaseTest)}
-        </ProtectedRoute>
-      } />
-      <Route path="/demo/related-records" element={
-        <ProtectedRoute>
-          {withSystemSuspense(RelatedRecordsDemo)}
-        </ProtectedRoute>
-      } />
 
       
       {/* Catch-all route for 404 errors */}
