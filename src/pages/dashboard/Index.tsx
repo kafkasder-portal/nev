@@ -16,10 +16,24 @@ import DashboardCharts from '@components/DashboardCharts'
 export default function DashboardIndex() {
   return (
     <div className="space-y-6">
-      {/* Hoş Geldiniz Başlığı */}
-      <div className="rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
-        <h1 className="text-2xl font-bold">Dernek Yönetim Paneline Hoş Geldiniz</h1>
-        <p className="mt-2 text-blue-100">Bugün {new Date().toLocaleDateString('tr-TR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      {/* Executive Summary Header */}
+      <div className="corporate-card-elevated p-8 bg-gradient-to-r from-corporate-navy to-primary text-white">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-semibold tracking-tight">Operasyonel Kontrol Merkezi</h1>
+            <p className="mt-2 text-white/90 font-medium">
+              {new Date().toLocaleDateString('tr-TR', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </p>
+          </div>
+          <div className="hidden sm:block">
+            <Activity className="h-16 w-16 text-white/20" />
+          </div>
+        </div>
       </div>
 
       {/* Ana İstatistikler */}
