@@ -328,10 +328,7 @@ export default function TasksIndex() {
 
       {/* Tasks List */}
       {loading ? (
-        <div className="text-center py-8">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
-          <p className="text-muted-foreground mt-2">Görevler yükleniyor...</p>
-        </div>
+        <TaskSkeletonList count={5} />
       ) : (
         <Card className="overflow-hidden">
           {filteredTasks.length > 0 ? (
