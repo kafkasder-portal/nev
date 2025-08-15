@@ -28,7 +28,7 @@ export default function TasksIndex() {
   
   // const permissions = usePermissions()
   const { user } = useAuthStore()
-  // YETKİ KONTROLÜ KALDIRILDI - TÜM KULLANICILAR ERİŞEBİLİR
+  // YETK�� KONTROLÜ KALDIRILDI - TÜM KULLANICILAR ERİŞEBİLİR
   const canCreateTask = true
   // const canViewTasks = true
   const canCompleteTask = true
@@ -45,7 +45,12 @@ export default function TasksIndex() {
       const data = await tasksApi.getTasks()
       setTasks(data)
     } catch (error) {
-      console.error('Failed to fetch tasks:', error)
+      errorService.logError(error as Error, {
+        component: 'TasksIndex',
+        action: 'fetchTasks',
+        userId: user?.id,
+        userEmail: user?.email
+      }, ErrorCategory.NETWORK)
       toast.error('Görevler yüklenirken hata oluştu')
     } finally {
       setLoading(false)
