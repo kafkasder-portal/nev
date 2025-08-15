@@ -48,28 +48,28 @@ export default function DashboardIndex() {
         <StatCard
           title="Kayıtlı Yararlanıcı Sayısı"
           value="1,247"
-          icon={<Users className="h-5 w-5 text-corporate-navy" />} 
+          icon={<UserCheck className="h-5 w-5 text-corporate-navy" />} 
           accentClass="bg-blue-100"
           subtitle="+12 bu ay"
         />
         <StatCard
           title="Bekleyen Başvuru Sayısı"
           value="187"
-          icon={<FileText className="h-5 w-5 text-warning" />}
+          icon={<ClipboardList className="h-5 w-5 text-warning" />}
           accentClass="bg-orange-100"
           subtitle="Değerlendirme aşamasında"
         />
         <StatCard
           title="Aylık Bağış Geliri"
           value="₺45,670"
-          icon={<Coins className="h-5 w-5 text-success" />}
+          icon={<CreditCard className="h-5 w-5 text-success" />}
           accentClass="bg-green-100"
           subtitle="Önceki aya göre %15 artış"
         />
         <StatCard
           title="Dağıtılan Yardım Tutarı"
           value="₺38,240"
-          icon={<Heart className="h-5 w-5 text-info" />}
+          icon={<HandHeart className="h-5 w-5 text-info" />}
           accentClass="bg-blue-100"
           subtitle="Mevcut dönem"
         />
