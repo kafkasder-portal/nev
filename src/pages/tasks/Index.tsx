@@ -246,15 +246,15 @@ export default function TasksIndex() {
             <Clock className="h-10 w-10 text-warning" />
           </div>
         </div>
-        <Card className="p-6">
+        <div className="corporate-card-elevated p-6 hover:shadow-lg transition-all duration-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Tamamlanan</p>
-              <p className="text-2xl font-bold">{stats.completed}</p>
+              <p className="text-sm font-medium text-corporate-gray uppercase tracking-wide">Tamamlanan</p>
+              <p className="text-3xl font-semibold text-corporate-slate mt-1">{stats.completed}</p>
             </div>
-            <CheckCircle className="h-8 w-8 text-green-500" />
+            <CheckCircle className="h-10 w-10 text-success" />
           </div>
-        </Card>
+        </div>
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
