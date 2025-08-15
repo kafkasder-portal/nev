@@ -60,6 +60,76 @@
   }
 }
 
+@layer components {
+  /* Corporate Typography */
+  body {
+    font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: hsl(var(--foreground));
+  }
+
+  /* Professional text colors */
+  .text-corporate-navy { color: hsl(var(--corporate-navy)); }
+  .text-corporate-slate { color: hsl(var(--corporate-slate)); }
+  .text-corporate-gray { color: hsl(var(--corporate-gray)); }
+
+  /* Corporate background colors */
+  .bg-corporate-navy { background-color: hsl(var(--corporate-navy)); }
+  .bg-corporate-light { background-color: hsl(var(--corporate-light)); }
+
+  /* Status colors */
+  .text-success { color: hsl(var(--success)); }
+  .text-warning { color: hsl(var(--warning)); }
+  .text-info { color: hsl(var(--info)); }
+  .bg-success { background-color: hsl(var(--success)); }
+  .bg-warning { background-color: hsl(var(--warning)); }
+  .bg-info { background-color: hsl(var(--info)); }
+
+  /* Corporate Card Styles */
+  .corporate-card {
+    @apply bg-card border border-border rounded-lg shadow-sm;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .corporate-card-elevated {
+    @apply corporate-card;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  /* Professional Button Styles */
+  .btn-corporate-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-primary focus:ring-2 focus:ring-offset-2;
+    transition: all 150ms ease-in-out;
+  }
+
+  .btn-corporate-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border;
+    transition: all 150ms ease-in-out;
+  }
+
+  /* Professional Layout */
+  .corporate-sidebar {
+    @apply bg-corporate-navy text-white;
+    background: linear-gradient(180deg, hsl(var(--corporate-navy)) 0%, hsl(213 94% 12%) 100%);
+  }
+
+  .corporate-header {
+    @apply bg-background border-b border-border;
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .dark .corporate-header {
+    background: rgba(0, 0, 0, 0.95);
+  }
+}
+
 @layer base {
   * { @apply border-border; }
   body { @apply bg-background text-foreground; }
