@@ -474,7 +474,7 @@ router.post('/reset-password', async (req: Request, res: Response): Promise<void
     }
 
     // Verify token and update password
-    const { data, error } = await supabase.auth.verifyOtp({
+    const { data: _data, error } = await supabase.auth.verifyOtp({
       token_hash: token,
       type: 'recovery'
     });
