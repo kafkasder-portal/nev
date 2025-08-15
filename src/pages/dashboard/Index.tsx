@@ -225,12 +225,20 @@ function QuickAccessCard({ title, description, icon, color, link }: {
 }) {
   return (
     <Link to={link} className="group block">
-      <div className="rounded-lg border bg-card p-4 transition-all hover:border-primary hover:shadow-md">
-        <div className={`mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg ${color} text-white`}>
-          {icon}
+      <div className="corporate-card p-6 transition-all duration-200 hover:shadow-lg hover:border-primary/20 group-hover:scale-105">
+        <div className="flex items-start gap-4">
+          <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${color} text-white shadow-sm group-hover:shadow-md transition-shadow`}>
+            {icon}
+          </div>
+          <div className="flex-1 min-w-0">
+            <h3 className="font-semibold text-corporate-slate group-hover:text-primary transition-colors text-lg mb-1">
+              {title}
+            </h3>
+            <p className="text-sm text-corporate-gray leading-relaxed">
+              {description}
+            </p>
+          </div>
         </div>
-        <h3 className="font-semibold group-hover:text-primary">{title}</h3>
-        <p className="text-sm text-muted-foreground">{description}</p>
       </div>
     </Link>
   )
