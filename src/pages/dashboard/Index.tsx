@@ -68,7 +68,7 @@ export default function DashboardIndex() {
         <StatCard
           title="Dağıtılan Yardım Tutarı"
           value="₺38,240"
-          icon={<HandHeart className="h-5 w-5 text-info" />}
+          icon={<Heart className="h-5 w-5 text-info" />}
           accentClass="bg-blue-100"
           subtitle="Mevcut dönem"
         />
