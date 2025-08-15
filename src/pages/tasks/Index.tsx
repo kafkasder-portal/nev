@@ -228,15 +228,15 @@ export default function TasksIndex() {
 
       {/* Operational Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-        <Card className="p-6">
+        <div className="corporate-card-elevated p-6 hover:shadow-lg transition-all duration-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Toplam Görev</p>
-              <p className="text-2xl font-bold">{stats.total}</p>
+              <p className="text-sm font-medium text-corporate-gray uppercase tracking-wide">Toplam Görev</p>
+              <p className="text-3xl font-semibold text-corporate-slate mt-1">{stats.total}</p>
             </div>
-            <CheckCircle className="h-8 w-8 text-blue-500" />
+            <CheckCircle className="h-10 w-10 text-corporate-navy" />
           </div>
-        </Card>
+        </div>
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
