@@ -5,6 +5,7 @@ import { Card } from '@components/ui/card'
 import TaskForm from '@components/tasks/TaskForm'
 import TaskDetailModal from '@components/tasks/TaskDetailModal'
 import RealtimeTaskUpdates from '@components/tasks/RealtimeTaskUpdates'
+import { TaskSkeletonList } from '@components/tasks/TaskSkeleton'
 import { tasksApi } from '../../api/tasks'
 import { Task } from '@/types/collaboration'
 // import { usePermissions } from '@hooks/usePermissions'
@@ -28,7 +29,7 @@ export default function TasksIndex() {
   
   // const permissions = usePermissions()
   const { user } = useAuthStore()
-  // YETK�� KONTROLÜ KALDIRILDI - TÜM KULLANICILAR ERİŞEBİLİR
+  // YETKİ KONTROLÜ KALDIRILDI - TÜM KULLANICILAR ERİŞEBİLİR
   const canCreateTask = true
   // const canViewTasks = true
   const canCompleteTask = true
