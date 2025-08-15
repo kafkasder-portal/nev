@@ -10,8 +10,18 @@ export interface Task {
   category?: string
   estimated_hours?: number
   actual_hours?: number
+  time_tracked?: number // Real-time tracked hours
   completion_notes?: string
   completed_at?: string
+  dependencies?: string[] // Task IDs that must be completed first
+  tags?: string[]
+  recurring?: {
+    enabled: boolean
+    pattern: 'daily' | 'weekly' | 'monthly'
+    end_date?: string
+    next_occurrence?: string
+  }
+  subtasks?: TaskSubtask[]
   created_at: string
   updated_at: string
 }
